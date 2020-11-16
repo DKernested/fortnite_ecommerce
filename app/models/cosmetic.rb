@@ -4,7 +4,7 @@ class Cosmetic < ApplicationRecord
 
   def self.search(search)
     if search
-      Cosmetic.where("name LIKE ?", "%#{search}")
+      Cosmetic.where("name LIKE ? OR description LIKE ?", "%#{search}", "%#{search}")
     else
       Cosmetic.all
     end

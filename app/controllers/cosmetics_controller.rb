@@ -6,4 +6,5 @@ class CosmeticsController < ApplicationController
   def show
     @cosmetic = Cosmetic.find(params[:id])
   end
+
 end
