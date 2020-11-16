@@ -1,5 +1,5 @@
 class CosmeticsController < ApplicationController
   def index
-    render({ json: Cosmetic.all })
+    @cosmetics = Cosmetic.all
   end
 end

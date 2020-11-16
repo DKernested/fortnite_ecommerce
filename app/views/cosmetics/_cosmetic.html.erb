@@ -1,0 +1,23 @@
+<div class="column">
+  <div class="card">
+    <div class="card-content">
+      <h2 class="title is-2"><%= cosmetic.name %></h2>
+        <% if cosmetic.image.present? %>
+          <div class="card-image">
+            <figure class="image is-200x200">
+              <%= image_tag cosmetic.image %>
+            </figure>
+          </div>
+        <% end %>
+        <footer class="card-footer">
+          <p class="card-footer-item">
+            <%= cosmetic.item_type %>
+          </p>
+          <p class="card-footer-item">
+            <%= cosmetic.rarity %>
+          </p>
+        </footer>
+    </div>
+  </div>
+</div>
+
