@@ -1,5 +1,9 @@
 class CosmeticsController < ApplicationController
   def index
-    @cosmetics = Cosmetic.all
+    @cosmetics = Cosmetic.search(params[:search])
+  end
+
+  def show
+    @cosmetic = Cosmetic.find(params[:id])
   end
 end

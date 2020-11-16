@@ -1,5 +1,12 @@
 <h1 class="title is-1">Fortnite Cosmetics!</h1>
 
+<%= form_tag cosmetics_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <div class= "columns is-multiline">
 <%= render partial: 'cosmetic', collection: @cosmetics %>
 </div>
