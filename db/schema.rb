@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_15_231813) do
+ActiveRecord::Schema.define(version: 2020_11_16_030916) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_11_15_231813) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cosmetics", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "item_type"
+    t.string "rarity"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -71,15 +81,6 @@ ActiveRecord::Schema.define(version: 2020_11_15_231813) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.integer "category_id"
-    t.string "rarity"
-    t.decimal "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

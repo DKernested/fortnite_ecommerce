@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cosmetics
   devise_for :customers
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
