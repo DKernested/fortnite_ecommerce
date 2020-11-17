@@ -11,7 +11,7 @@ cosmetics = JSON.parse(response.body.to_s)
 
 cosmetics["data"].each do |cosmetic|
   category = Category.find_or_create_by(name: cosmetic["type"]["value"])
-  puts category.errors.messages # put on line 13
+  # puts category.errors.messages # put on line 13
   next unless category&.valid?
 
   cosmetic_entry = category.cosmetics.create(
@@ -21,7 +21,7 @@ cosmetics["data"].each do |cosmetic|
     rarity:      cosmetic["rarity"]["value"]
     # image:       cosmetic["images"] ["smallIcon"]
   )
-  puts cosmetic_entry.errors.messages
+  # puts cosmetic_entry.errors.messages
 end
 
 if Rails.env.development?
@@ -29,5 +29,5 @@ if Rails.env.development?
                     password:              "password",
                     password_confirmation: "password")
 end
-puts "created #{Cosmetic.count} cosmetics"
-puts "created #{Category.count} categories"
+# puts "created #{Cosmetic.count} cosmetics"
+# puts "created #{Category.count} categories"
