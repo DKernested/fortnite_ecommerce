@@ -1,5 +1,9 @@
 <h1 class="title is-1">Fortnite Cosmetics!</h1>
 
+<ul>
+<li><%= link_to "See all categories", "category#index" %></li>
+</ul>
+
 <%= form_tag cosmetics_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>

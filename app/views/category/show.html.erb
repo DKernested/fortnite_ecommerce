@@ -1,0 +1,32 @@
+<h1 class="title is-1"><%= @category.name %></h1>
+<em><%= link_to "Home", root_path %></em>
+
+<div class="columns is-multiline">
+  <div class="column">
+    <div class="card">
+      <div class="card-content">
+        <% @category.cosmetics.each do |cosmetic| %>
+          <h2 class="card-header-title"><%= link_to cosmetic.name, cosmetic %></h2>
+            <% if cosmetic.image.present? %>
+              <div class="card-image">
+                <figure class="image is-200x200">
+                  <%= image_tag cosmetic.image %>
+                </figure>
+              </div>
+            <% end %>
+              <p>
+              <%= cosmetic.description %>
+              </p>
+            <footer class="card-footer">
+              <p class="card-footer-item">
+                <%= cosmetic.item_type %>
+              </p>
+              <p class="card-footer-item">
+                <%= cosmetic.rarity %>
+              </p>
+            </footer>
+            <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
