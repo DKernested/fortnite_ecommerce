@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :cosmetics
+  has_many :cosmetics, dependent: :destroy
 end

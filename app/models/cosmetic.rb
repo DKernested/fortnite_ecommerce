@@ -1,7 +1,8 @@
 class Cosmetic < ApplicationRecord
   # validates :name, :description, :type, :rarity, presence: true
   has_one_attached :image
-  has_many :categories, dependent: :destroy
+
+  belongs_to :category, optional: true
 
   validates :name, presence: true
 
