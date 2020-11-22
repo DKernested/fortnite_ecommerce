@@ -12,6 +12,28 @@
      </head>
 
   <body>
+  <header>
+  <nav>
+    <ul>
+        <li>
+          cart
+          <% if cart.present? %>
+            <sup> <%= cart.size %> </sup>
+              <ul>
+              <% cart.each do |cosmetic| %>
+                <li>
+                  <%= cosmetic.name %> <%= link_to '❌', cart_path(cosmetic), method: :delete %>
+                </li>
+                <% end %>
+              </ul>
+          <% end %>
+        </li>
+    </ul>
+  </nav>
+  </header>
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>

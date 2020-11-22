@@ -20,6 +20,18 @@
             <%= cosmetic.rarity %>
           </p>
         </footer>
+        <aside>
+          <% if cart.include?(cosmetic) %>
+            <%= button_to cart_path(cosmetic), method: :delete do %>
+              ❌Remove From Cart
+            <% end %>
+          <% else %>
+          <%= form_with url: cart_index_path do %>
+            <%= hidden_field_tag(:id, cosmetic.id) %>
+            <%= button_tag '➕ Add to Cart' %>
+            <% end %>
+          <% end %>
+        </aside>
     </div>
   </div>
 </div>
