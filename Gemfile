@@ -36,7 +36,7 @@ gem 'devise' # Authentication Gem
 
 gem 'rest-client' # API Gem
 
-gem 'will_paginate', '~> 3.1.0' # Pagination Gem
+gem 'kaminari' # Pagination Gem
 
 gem 'ransack' # Search gem
 

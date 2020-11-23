@@ -1,7 +1,7 @@
 class CosmeticsController < ApplicationController
   def index
     @q = Cosmetic.ransack(params[:q])
-    @cosmetics = @q.result(distinct: true)
+    @cosmetics = @q.result.includes(:category).page(params[:page])
   end
 
   def show
