@@ -6,9 +6,9 @@ class Cosmetic < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.search(search)
+  def self.search(search, search_category)
     if search
-      Cosmetic.where("name LIKE ? OR description LIKE ?", "%#{search}", "%#{search}")
+      Cosmetic.where("name LIKE ? AND category = ?", "%#{search}%", search_category.to_s)
     else
       Cosmetic.all
     end

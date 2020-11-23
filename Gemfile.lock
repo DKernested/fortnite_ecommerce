@@ -310,6 +310,7 @@ DEPENDENCIES
   listen (~> 3.2)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  ransack
   rest-client
   rubocop
   rubocop-rails

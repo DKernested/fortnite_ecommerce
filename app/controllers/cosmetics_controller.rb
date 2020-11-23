@@ -1,6 +1,7 @@
 class CosmeticsController < ApplicationController
   def index
-    @cosmetics = Cosmetic.search(params[:search]).paginate(page: params[:page], per_page: 60)
+    @q = Cosmetic.ransack(params[:q])
+    @cosmetics = @q.result(distinct: true)
   end
 
   def show
