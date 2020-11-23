@@ -1,5 +1,5 @@
 ActiveAdmin.register Customer do
-  permit_params :name, :email, :password, :province, :image
+  permit_params :name, :email, :password, :province_id, :image
 
   form do |f|
     f.semantic_errors

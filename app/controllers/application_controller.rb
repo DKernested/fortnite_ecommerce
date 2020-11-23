@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
     # Return a collection of product objects
     Cosmetic.find(session[:shopping_cart])
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name province_id email password])
+  end
 end
