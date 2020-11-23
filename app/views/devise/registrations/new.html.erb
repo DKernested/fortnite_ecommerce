@@ -18,6 +18,11 @@
     <%= f.collection_select :province_id, Province.all, :id, :name %>
   </div>
 
+   <div class="field">
+    <%= f.label :address %> <br />
+    <%= f.text_field :address %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

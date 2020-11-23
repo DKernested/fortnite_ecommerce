@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_005604) do
+ActiveRecord::Schema.define(version: 2020_11_23_034942) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_005604) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "province_id"
+    t.string "address"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
