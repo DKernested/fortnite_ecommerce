@@ -2,3 +2,5 @@
 
 <%= debug = @session %>
 <%= debug = @payment_intent %>
+
+<% payment_id = Stripe::Checkout::Session.find_or_create_by(id: @session["id"]) %>

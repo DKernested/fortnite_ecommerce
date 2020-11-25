@@ -12,16 +12,6 @@ response = RestClient.get(url)
 cosmetics = JSON.parse(response.body.to_s)
 
 cosmetics["data"].each do |cosmetic|
-  # if cosmetic["rarity"]["value"] == "rare"
-  #   price == 1000
-  #   if cosmetic["rarity"]["value"] == "epic"
-  #     price == 1200
-  #     if cosmetic["rarity"]["value"] == "legendary"
-  #       price == 1500
-  #     end
-  #   end
-  # end
-
   category = Category.find_or_create_by(name: cosmetic["type"]["value"])
   # puts category.errors.messages # put on line 13
   next unless category&.valid?
