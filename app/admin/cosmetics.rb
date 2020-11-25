@@ -1,5 +1,5 @@
 ActiveAdmin.register Cosmetic do
-  permit_params :name, :description, :category_id, :rarity, :image
+  permit_params :name, :description, :category_id, :rarity, :price, :image
 
   form do |f|
     f.semantic_errors

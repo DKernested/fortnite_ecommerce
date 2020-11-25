@@ -1,3 +1,4 @@
+
 <div class="column">
   <div class="card">
     <div class="card-content">
@@ -32,6 +33,7 @@
             <% end %>
           <% end %>
         </aside>
+        <%= button_to 'Buy Now!', checkout_create_path, method: :post, params: { id: cosmetic.id }, remote: true %>
     </div>
   </div>
 </div>
