@@ -5,5 +5,6 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, presence: true
   has_one_attached :image
+  has_many :orders, dependent: :destroy
   belongs_to :province, optional: true
 end

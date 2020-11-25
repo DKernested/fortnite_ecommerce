@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_224225) do
+ActiveRecord::Schema.define(version: 2020_11_25_030245) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -126,11 +126,26 @@ ActiveRecord::Schema.define(version: 2020_11_24_224225) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "payment_id"
+    t.integer "cosmetic_id"
+    t.integer "customer_id"
+    t.integer "province_id"
+    t.integer "cosmetic_cost"
+    t.integer "tax_cost"
+    t.integer "total_cost"
+    t.string "order_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "provinces", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.decimal "pst_rate"
+    t.decimal "gst_rate"
+    t.decimal "hst_rate"
   end
 
   create_table "spree_addresses", force: :cascade do |t|
