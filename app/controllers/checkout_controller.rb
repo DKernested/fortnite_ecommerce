@@ -12,6 +12,7 @@ class CheckoutController < ApplicationController
 
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
+      customer_email:       current_customer.email,
       line_items:           [{
         name:        cosmetic_single.name,
         description: cosmetic_single.description,
@@ -29,7 +30,7 @@ class CheckoutController < ApplicationController
                              {
                                name:        "GST/HST",
                                description: "Government Sales Tax or Harmonized Sales Tax",
-                               amount:      (cosmetic_single.price * province_tax.gst_rate).round.to_i,
+                               amount:      (cosmetic_single.price * province_tax.gst_hst_rate).round.to_i,
                                currency:    "cad",
                                quantity:    1
                              }],

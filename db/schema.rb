@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_030245) do
+ActiveRecord::Schema.define(version: 2020_11_26_155354) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -144,8 +144,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_030245) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.decimal "pst_rate"
-    t.decimal "gst_rate"
-    t.decimal "hst_rate"
+    t.decimal "gst_hst_rate"
   end
 
   create_table "spree_addresses", force: :cascade do |t|
