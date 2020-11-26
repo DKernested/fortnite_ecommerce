@@ -3,4 +3,23 @@
 <%= debug = @session %>
 <%= debug = @payment_intent %>
 
-<% payment_id = Stripe::Checkout::Session.find_or_create_by(id: @session["id"]) %>
+<% payment_id = Stripe::Checkout::Session.find_by(id: @session["id"]) %>
+<% if payment_id&.valid?%>
+  <% customer = Customer.find(current_customer.id)%>%
+<% end %>
+<% if customer_id&.valid?%>
+  <% province_tax = Province.find_by(id: customer.province_id)%>
+<% end %>
+<% if province_tax&.valid? %>
+  <% order = Order.create(
+    total_cost:  payment_id.amount,
+    tax_cost:    province_tax.hst * payment_id.amount,
+    if payment_id.amount == payment_id.amount_recieved
+    order_status: "success")
+  %>
+  <% end %>
+  <% end %>
+
+<%=debug = customer.id %>
+<%= debug = province_tax.id %>
+<%= debug = order %>
