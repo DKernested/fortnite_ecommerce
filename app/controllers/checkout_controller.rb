@@ -2,6 +2,7 @@ class CheckoutController < ApplicationController
   def create
     # cosmetic = Cosmetic.find(session[:shopping_cart])
     cosmetic_single = Cosmetic.find(params[:id])
+    @cosmetic_instance = cosmetic_single.id
 
     province_tax = Province.find_by(id: current_customer.province_id)
 
@@ -44,8 +45,9 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    @session = Stripe::Checkout::Session.retrieve(params[:session_id], { expand: "line_items" })
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    @cosmetic_id = @cosmetic_instance
   end
 
   def cancel; end

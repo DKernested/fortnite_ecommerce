@@ -3,23 +3,21 @@
 <%= debug = @session %>
 <%= debug = @payment_intent %>
 
-<% payment_id = Stripe::Checkout::Session.find_by(id: @session["id"]) %>
-<% if payment_id&.valid?%>
-  <% customer = Customer.find(current_customer.id)%>%
-<% end %>
-<% if customer_id&.valid?%>
-  <% province_tax = Province.find_by(id: customer.province_id)%>
-<% end %>
-<% if province_tax&.valid? %>
-  <% order = Order.create(
-    total_cost:  payment_id.amount,
-    tax_cost:    province_tax.hst * payment_id.amount,
-    if payment_id.amount == payment_id.amount_recieved
-    order_status: "success")
-  %>
-  <% end %>
-  <% end %>
+<% payment_id = @payment_intent.id %>
 
-<%=debug = customer.id %>
-<%= debug = province_tax.id %>
+<% customer = Customer.find(current_customer.id)%>%
+<% province_tax = Province.find_by(id: customer.province_id)%>
+
+<% order = Order.create(
+  payment_id:  @payment_intent.id,
+  cosmetic_id: @cosmetic_id,
+  customer_id: customer,
+  province_id: province_tax.id,
+  cosmetic_cost: @session.line_items.data[2],
+  tax_cost:    @tax_cost,
+  total_cost:  @payment_intent.amount_received,
+  order_status: "new")
+%>
+
+<%= "ORDER OBJECT BEGINS HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" %>
 <%= debug = order %>
