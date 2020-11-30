@@ -45,7 +45,7 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    @session = Stripe::Checkout::Session.retrieve(params[:session_id], { expand: "line_items" })
+    @session = Stripe::Checkout::Session.retrieve({ id: params[:session_id], expand: ["line_items"] })
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @cosmetic_id = @cosmetic_instance
   end
