@@ -21,31 +21,39 @@
   order_status: "paid")
 %>
 
+<strong>payment id</strong>
+<%= @payment_intent.id %>
+<br/>
+
+<strong>cosmetic id</strong>
+  <%= session[:cosmetic_id]%>
+<br/>
+
+  <strong>customer id</strong>
+  <%= customer.id %>
+<br/>
+
+<strong>province id</strong>
+  <%= province_tax.id%>
 <br/>
 
 <strong>price</strong>
 <%= @session.line_items.data[0]["amount_total"] %>
+<br/>
 
 <strong>PST TAX</strong>
 <%= @session.line_items.data[1]["amount_total"] %>
+<br/>
 
 <Strong>GST </Strong>
 <%= @session.line_items.data[2]["amount_total"] %>
+<br/>
 
 <strong>COMBINED</strong>
 <%= tax_cost %>
+<br/>
 
 <strong>TOTAL COST  </strong>
 <%= @payment_intent.amount_received %>
 
-<strong>payment id</strong>
-<%= @payment_intent.id %>
 
-<strong>cosmetic id</strong>
-  <%= session[:cosmetic_id]%>
-
-  <strong>customer id</strong>
-  <%= customer.id %>
-
-<strong>province id</strong>
-  <%= province_tax.id%>
