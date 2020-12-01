@@ -1,23 +1,51 @@
 <h1>Successful transaction!</h1>
 
 <%= debug = @session %>
+,<strong>payment intent</strong>
 <%= debug = @payment_intent %>
 
 <% payment_id = @payment_intent.id %>
 
 <% customer = Customer.find(current_customer.id)%>%
 <% province_tax = Province.find_by(id: customer.province_id)%>
+<%= tax_cost = @session.line_items.data[1]["amount_total"] + @session.line_items.data[2]["amount_total"] %>
 
 <% order = Order.create(
   payment_id:  @payment_intent.id,
-  cosmetic_id: @cosmetic_id,
-  customer_id: customer,
+  cosmetic_id: session[:cosmetic_id],
+  customer_id: customer.id,
   province_id: province_tax.id,
-  cosmetic_cost: @session.line_items.data[2],
-  tax_cost:    @tax_cost,
+  cosmetic_cost: @session.line_items.data[0]["amount_total"],
+  tax_cost:    tax_cost,
   total_cost:  @payment_intent.amount_received,
-  order_status: "new")
+  order_status: "paid")
 %>
 
-<%= "ORDER OBJECT BEGINS HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" %>
-<%= debug = order %>
+<br/>
+
+<strong>price</strong>
+<%= @session.line_items.data[0]["amount_total"] %>
+
+<strong>PST TAX</strong>
+<%= @session.line_items.data[1]["amount_total"] %>
+
+<Strong>GST </Strong>
+<%= @session.line_items.data[2]["amount_total"] %>
+
+<strong>COMBINED</strong>
+<%= tax_cost %>
+
+<strong>TOTAL COST  </strong>
+<%= @payment_intent.amount_received %>
+
+<strong>payment id</strong>
+<%= @payment_intent.id %>
+
+<strong>cosmetic id</strong>
+  <%= session[:cosmetic_id]%>
+
+  <strong>customer id</strong>
+  <%= customer.id %>
+
+<strong>province id</strong>
+  <%= province_tax.id%>

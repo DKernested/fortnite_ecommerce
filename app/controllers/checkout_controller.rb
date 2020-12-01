@@ -2,7 +2,7 @@ class CheckoutController < ApplicationController
   def create
     # cosmetic = Cosmetic.find(session[:shopping_cart])
     cosmetic_single = Cosmetic.find(params[:id])
-    @cosmetic_instance = cosmetic_single.id
+    session[:cosmetic_id] = cosmetic_single.id
 
     province_tax = Province.find_by(id: current_customer.province_id)
 
